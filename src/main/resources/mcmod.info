@@ -12,5 +12,19 @@
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
+},
+{
+  "modid": "scalamod",
+  "name": "Example Scala Mod",
+  "description": "Example Mod written in Scala and Forge",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ExampleDude"],
+  "credits": "Alejandro & Victor, for making this example",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
 }
 ]
