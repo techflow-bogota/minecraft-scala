@@ -5,14 +5,20 @@ working with this API is [here](http://mcforge.readthedocs.io/en/latest/gettings
 but as this demo also has the Scala usage component, we will need to consider a set of additional steps to achieve this.
 
 ### Before Start
-Make sure you have JDK 8 installed on your machine and fork or clone this repository.
+Make sure you have 
+- JDK 8 installed on your machine 
+- You have forked or cloned this repository.
+- You have installed Eclipse or IntelliJ IDE.
+
+You can clone the repository by running `git clone https://github.com/techflow-bogota/minecraft-scala.git`
 
 ### Getting Started
 After forking or cloning the repository please run these commands being in the root of the project
 
 1. Setup the workspace.
     - Windows: `gradlew setupDecompWorkspace`
-    - Linux/Mac OS: `./gradlew setupDecompWorkspace`
+    - Linux/Mac OS: `./gradlew setupDecompWorkspace` make sure the `gradlew` file has the proper rights to be executed 
+    (`sudo 775 gradlew` command will do the trick).
     
     This will take a while as several resources will be downloaded from internet and also a Minecraft decompilation process
     will have place.
@@ -34,6 +40,7 @@ are the same explained in the Forge API's official guide.
 `gradlew clean` to reset everything (this does not affect your code) and then start the process again.
 
 4. Testing the environment.
- - To test run with your mod, `gradlew runClient`. This will launch Minecraft from the <runDir> location, including your mod code. There are various customizations to this command. Consult the ForgeGradle cookbook for more information.
  - To build your mod, run `gradlew build`. This will output a file in `build/libs` with the name  `[archivesBaseName]-[version].jar`. 
  This file can be placed in the mods folder of a forge enabled Minecraft setup, and distributed.
+ - To test run with your mod, `gradlew runClient`. This will launch Minecraft from the <runDir> location, including your mod code. There are various customizations to this command. Consult the ForgeGradle cookbook for more information.
+ 
