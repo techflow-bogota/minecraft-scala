@@ -1,21 +1,23 @@
 package com.endava.bog.techflow.minecraft
 
 import com.endava.bog.techflow.minecraft.constants.References
-import com.endava.bog.techflow.minecraft.proxy.CommonProxy
-import net.minecraft.init.Blocks
-import net.minecraft.item.Item
-import net.minecraftforge.event.RegistryEvent
+import com.endava.bog.techflow.minecraft.elements.GameElements
+import com.endava.bog.techflow.minecraft.elements.items.ItemBase
+import com.endava.bog.techflow.minecraft.proxy.ClientProxy
+import net.minecraftforge.fml.common.Mod.EventHandler
+import net.minecraftforge.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import net.minecraftforge.fml.common.{Mod, SidedProxy}
-import net.minecraftforge.fml.common.Mod.{EventHandler, Instance}
-import net.minecraftforge.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent, FMLStateEvent}
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
-import net.minecraftforge.fml.common.registry.GameRegistry
 import org.apache.logging.log4j.Logger
 
-@Mod(modid = References.MOD_ID, name = References.MOD_NAME, version = References.MOD_VESION)
-class ExampleMod {
+@Mod(modid = References.MOD_ID, name = References.MOD_NAME, version = References.MOD_VESION, modLanguage = References.MOD_LANG)
+object ExampleMod {
 
-  var logger: Logger = null
+  val instance = this
+
+  var logger: Logger = _
+
+  @SidedProxy(clientSide = References.CLIENT_PROXY_CLASS, serverSide = References.COMMON_PROXY_CLASS)
+  var proxy: ClientProxy = _
 
   @EventHandler
   def preInit(event: FMLPreInitializationEvent): Unit = {
@@ -23,6 +25,9 @@ class ExampleMod {
     //Config Handling
     logger = event.getModLog()
     logger.info("preInit() event")
+
+    GameElements.addItem(new ItemBase("ruby", ExampleMod.proxy))
+
   }
 
   @EventHandler
@@ -35,12 +40,5 @@ class ExampleMod {
     //list of register items, blocks etc
     logger.info("postInit() event")
   }
-
-}
-
-object ExampleMod {
-
-  @SidedProxy(clientSide = References.CLIENT_PROXY_CLASS, serverSide = References.COMMON_PROXY_CLASS)
-  var proxy: CommonProxy = null
 
 }
