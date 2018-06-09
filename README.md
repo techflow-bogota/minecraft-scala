@@ -9,6 +9,7 @@ Make sure you have
 - JDK 8 installed on your machine 
 - You have forked or cloned this repository.
 - You have installed Eclipse or IntelliJ IDE.
+- Install a Scala plugin in your IDE.
 
 You can clone the repository by running `git clone https://github.com/techflow-bogota/minecraft-scala.git`
 
