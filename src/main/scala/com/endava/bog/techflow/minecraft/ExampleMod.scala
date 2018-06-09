@@ -1,9 +1,12 @@
 package com.endava.bog.techflow.minecraft
 
+import com.endava.bog.techflow.minecraft.elements.blocks.BlockBase
 import com.endava.bog.techflow.minecraft.constants.References
 import com.endava.bog.techflow.minecraft.elements.GameElements
 import com.endava.bog.techflow.minecraft.elements.items.ItemBase
 import com.endava.bog.techflow.minecraft.proxy.ClientProxy
+import net.minecraft.block.material.Material
+import net.minecraft.item.ItemBlock
 import net.minecraftforge.fml.common.Mod.EventHandler
 import net.minecraftforge.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import net.minecraftforge.fml.common.{Mod, SidedProxy}
@@ -26,7 +29,11 @@ object ExampleMod {
     logger = event.getModLog()
     logger.info("preInit() event")
 
+    val blockBase = new BlockBase("ruby_block", ExampleMod.proxy, Material.IRON)
+
     GameElements.addItem(new ItemBase("ruby", ExampleMod.proxy))
+    GameElements.addBlock(blockBase)
+    GameElements.addItem(new ItemBlock(blockBase).setRegistryName(blockBase.getRegistryName))
 
   }
 
